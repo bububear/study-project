@@ -35,8 +35,9 @@ public class StudyProjectApplicationTests {
         //存入超级父级id
         idList.add(id);
         // 递归查询次级id 存入 IdList 集合
-        getChildIds(idList, id);
+        List<Integer> childIds = getChildIds(idList, id);
         System.out.println(Arrays.toString(idList.toArray()));
+        System.out.println(Arrays.toString(childIds.toArray()));
         return false;
     }
 
@@ -46,7 +47,7 @@ public class StudyProjectApplicationTests {
      * @param idList 待删除集合
      * @param id     次级的parentID，当前层级的 ID
      */
-    private void getChildIds(ArrayList<Integer> idList, Integer id) {
+    private List<Integer> getChildIds(ArrayList<Integer> idList, Integer id) {
         List<CommentRecord> commentRecords = commentRecordMapper.selectByParentId(id);
         for (CommentRecord record : commentRecords) {
             Integer recordId = record.getId();
@@ -55,6 +56,7 @@ public class StudyProjectApplicationTests {
             // 递归（当层id为次级parentId）
             getChildIds(idList, recordId);
         }
+        return idList;
     }
 
 
