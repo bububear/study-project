@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,6 +30,9 @@ public class StudyProjectApplicationTests {
         deleteById(3);
         deleteById(4);
         deleteById(5);
+        // CollectionUtils
+        // StringUtils
+        // DateUtil
     }
 
     private boolean deleteById(Integer id) {
