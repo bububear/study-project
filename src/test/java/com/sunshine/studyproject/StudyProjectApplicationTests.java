@@ -1,5 +1,9 @@
 package com.sunshine.studyproject;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONPObject;
 import com.sunshine.studyproject.common.entities.CommentRecord;
 import com.sunshine.studyproject.common.mappers.CommentRecordMapper;
 import org.junit.Test;
@@ -14,6 +18,8 @@ import org.springframework.util.StringUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -21,6 +27,23 @@ import java.util.List;
 public class StudyProjectApplicationTests {
     @Autowired
     private CommentRecordMapper commentRecordMapper;
+
+    @Test
+    public void parseJson(){
+        List<String> list  = new ArrayList<String>();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        List<String> list2 = new ArrayList<String>();
+        list2.add("1");
+        list2.add("2");
+        list2.add("3");
+        list.addAll(list2);
+        List<String> collect = list.stream().distinct().collect(Collectors.toList());
+        Map<String,Object> map  = commentRecordMapper.selectMapByIds(collect);
+
+
+    }
 
     @Test
     public void contextLoads() {

@@ -4,6 +4,7 @@ import com.sunshine.studyproject.common.entities.CommentRecord;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface CommentRecordMapper {
@@ -20,4 +21,7 @@ public interface CommentRecordMapper {
     int updateByPrimaryKey(CommentRecord record);
 
     List<CommentRecord> selectByParentId(Integer parentId);
+
+    Map<String, Object> selectMapByIds(List<String> collect);
+    
 }
